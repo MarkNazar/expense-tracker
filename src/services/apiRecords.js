@@ -8,6 +8,7 @@ import {
   doc,
   getDoc,
   serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "./firebase";
 
@@ -44,5 +45,11 @@ export const addRecord = async (record) => {
 
 export const deleteRecord = async (id) => {
   const data = await deleteDoc(doc(db, "records", id));
+  return data;
+};
+
+export const updateRecord = async ({ id, updatedRecord }) => {
+  const recordRef = doc(db, "records", id);
+  const data = await updateDoc(recordRef, updatedRecord);
   return data;
 };

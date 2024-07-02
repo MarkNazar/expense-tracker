@@ -11,7 +11,7 @@ const StyledAppLayout = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 850px;
+  max-width: 960px;
   margin: 0 auto;
 `;
 

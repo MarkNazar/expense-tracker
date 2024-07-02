@@ -18,7 +18,7 @@ export const getExpenses = async (id) => {
   const q = query(
     expensesRef,
     where("recordId", "==", id),
-    orderBy("createdAt", "desc")
+    orderBy("createdAt", "asc")
   );
   const expensesSnapshot = await getDocs(q);
   const expenses = expensesSnapshot.docs.map((doc) => {

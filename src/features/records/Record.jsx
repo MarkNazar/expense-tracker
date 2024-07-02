@@ -1,5 +1,9 @@
 import ButtonIcon from "../../ui/ButtonIcon";
-import { HiOutlineEye, HiOutlineTrash } from "react-icons/hi";
+import {
+  HiOutlineEye,
+  HiOutlinePencilAlt,
+  HiOutlineTrash,
+} from "react-icons/hi";
 import styled from "styled-components";
 import useDeleteRecord from "./useDeleteRecord";
 import LinkIcon from "../../ui/LinkIcon";
@@ -7,6 +11,7 @@ import FlexColumn from "../../ui/FlexColumn";
 import Modal from "../../ui/Modal";
 import DeleteConfirmation from "../../ui/DeleteConfirmation";
 import useExpenses from "../expenses/useExpenses";
+import UpdateRecord from "./UpdateRecord";
 
 const StyledRecord = styled.div`
   padding: 20px;
@@ -77,6 +82,18 @@ const Record = ({ record }) => {
         <LinkIcon to={`/records/${id}`}>
           <HiOutlineEye />
         </LinkIcon>
+
+        <Modal>
+          <Modal.Open opens="edit-record">
+            <ButtonIcon>
+              <HiOutlinePencilAlt />
+            </ButtonIcon>
+          </Modal.Open>
+          <Modal.Window name="edit-record">
+            <UpdateRecord id={id} record={record} />
+          </Modal.Window>
+        </Modal>
+
         <Modal>
           <Modal.Open opens="delete-record">
             <ButtonIcon $variant="danger">
