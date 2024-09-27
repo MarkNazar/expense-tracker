@@ -68,12 +68,21 @@ const Record = ({ record }) => {
       <div>
         <h3>{month}</h3>
         <RecordInfo $variant={totalExpenses > budget ? "danger" : "normal"}>
-          Budget: {budget} AED
+          Budget: {budget}AED
         </RecordInfo>
         {isLoadingExpenses && <RecordInfo>Calculating...</RecordInfo>}
         {!isLoadingExpenses && (
           <RecordInfo>
-            Expenses: {totalExpenses ? `${totalExpenses}AED` : "--"}{" "}
+            <p>
+              Expenses:{" "}
+              {totalExpenses ? `${totalExpenses.toFixed(2)}AED` : "--"}{" "}
+            </p>
+            <p>
+              Remaining:{" "}
+              {totalExpenses
+                ? `${(budget - totalExpenses).toFixed(2)}AED`
+                : "--"}{" "}
+            </p>
           </RecordInfo>
         )}
       </div>
